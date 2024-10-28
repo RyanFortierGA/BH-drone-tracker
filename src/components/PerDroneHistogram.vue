@@ -132,7 +132,7 @@ export default {
   flex-direction: column;
   width: 100%;
   .chart-block {
-    height: 300px;
+    height: 400px;
     overflow-y: auto;
     span {
       display: flex;

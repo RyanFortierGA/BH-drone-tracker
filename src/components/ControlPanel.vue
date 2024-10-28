@@ -2,7 +2,7 @@
   <div class="control-panel">
     <button @click="toggleDetection" class="control-button">
       <font-awesome-icon :icon="isDetecting ? 'stop' : 'play'" />
-      <span v-if="isDetecting" class="detecting-animation"></span>
+      <span :class="isDetecting ? 'detecting-animation' : 'static-circle'"></span>
     </button>
     <span class="session-timer">{{ formattedSessionTimer }}</span>
     <button @click="$emit('clear-data')" class="clear-button">
@@ -93,27 +93,36 @@ export default {
   color: #ffcc00;
 }
 
+.static-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffcc00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .detecting-animation {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
-  background-color: #ffcc00;
+  width: 40px;
+  height: 40px;
+  border: 4px solid transparent;
+  border-top: 4px solid #ffcc00;
   border-radius: 50%;
-  animation: pulse 1s infinite;
+  animation: rotate 1s linear infinite;
   transform: translate(-50%, -50%);
 }
 
-@keyframes pulse {
+@keyframes rotate {
   0% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-  50% {
-    transform: scale(1.5) translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: scale(1) translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
