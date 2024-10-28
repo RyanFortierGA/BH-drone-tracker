@@ -7,6 +7,7 @@ This project is a Vue 3 application designed to simulate and visualize drone det
 - [Project Setup](#project-setup)
 - [Running the Drone Simulator](#running-the-drone-simulator)
 - [Running the UI](#running-the-ui)
+- [Features](#features)
 - [UI Controls](#ui-controls)
 - [Scripts](#scripts)
 
