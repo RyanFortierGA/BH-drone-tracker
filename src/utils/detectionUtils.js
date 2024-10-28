@@ -26,13 +26,14 @@ export function processDetections(message, allDetections, rssiDataByDroneId, rss
       if (!droneRssiData) {
         rssiDataByDroneId.push({
           drone_id: detection.drone_id,
+          timestamp: detection.start_time,
           rssiList: [detection.rssi]
         });
       } else {
         droneRssiData.rssiList.push(detection.rssi);
       }
   
-      rssiAllData.push({drone_id: detection.drone_id, rssi: detection.rssi, timestamp: now});
+      rssiAllData.push({drone_id: detection.drone_id, rssi: detection.rssi, timestamp: detection.start_time});
     });
   
     return { allDetections, rssiDataByDroneId, rssiAllData, currentActiveIds };
